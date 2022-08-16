@@ -57,21 +57,4 @@ public class ClientUDP {
         }
         
     }
-
-    // Método de conversão da mensagem que vem em bytes para o formato String
-    public static StringBuilder bytesToString (byte [] msgInBytes) {
-
-        if (msgInBytes == null) {
-            return null;
-        }
-
-        StringBuilder string = new StringBuilder();
-        for (byte b : msgInBytes) {
-            if (b != 0) {
-                string.append((char) b);
-            }
-        }
-
-        return string;
-    }
 }

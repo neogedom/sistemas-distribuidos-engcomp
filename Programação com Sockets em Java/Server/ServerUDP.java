@@ -7,7 +7,6 @@ public class ServerUDP {
     public static void main(String... args) {
         DatagramSocket socket = null;
         byte[] buffRequest = new byte[1000];
-        byte[] buffResponse = null;
         Scanner scanner = new Scanner(System.in);
 
         try {

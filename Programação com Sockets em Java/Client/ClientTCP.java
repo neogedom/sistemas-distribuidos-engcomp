@@ -22,6 +22,7 @@ public class ClientTCP {
             DataInputStream inputStream = new DataInputStream(client.getInputStream());
             String msg = inputStream.readUTF();
             System.out.println(msg); // Mensagem: Servidor conectado
+
             DataOutputStream outputStream = null;
             outputStream = new DataOutputStream(client.getOutputStream());
             System.out.println("Digite mensagens ao servidor ou q para sair: ");
@@ -29,12 +30,10 @@ public class ClientTCP {
             while (true) {
                 msg = scanner.nextLine();
                 if (msg.equals("q")) {
+                    outputStream.writeUTF(msg);
                     break;
                 }
                 outputStream.writeUTF("Cliente diz: " + msg);
-                
-                msg = inputStream.readUTF();
-                System.out.println(msg);
             }
             
             outputStream.flush();

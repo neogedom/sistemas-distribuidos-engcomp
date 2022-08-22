@@ -3,7 +3,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 
 /**
  * ServerTCP
@@ -14,7 +13,6 @@ public class ServerTCP {
         try {
             // Um objeto ServerSocket é instanciado pelo servidor com um nº de porta para comunicação (bind)
             ServerSocket server = new ServerSocket(5555);
-            Scanner scanner = new Scanner(System.in);
             
             System.out.println("Aguardando mensagem...");
             // O servidor chama o método accept() e espera 
@@ -30,21 +28,15 @@ public class ServerTCP {
             
             while(true) {       
                 inputStream = new DataInputStream(serverSocket.getInputStream());
-                System.out.println(inputStream.readUTF());
-                System.out.println("Responda ao cliente ou digite q para sair: ");
-                String msg = scanner.nextLine();
-            
-                if (msg.equals("q")) {
+                String msg = inputStream.readUTF();
+                if (msg.equals("q")){
                     break;
                 }
-
-                outputStream.writeUTF("Servidor diz: " + msg);     
+                System.out.println(msg);
             }
 
-            outputStream.flush();
             outputStream.close();
             inputStream.close();
-            scanner.close();
             server.close();
            
 

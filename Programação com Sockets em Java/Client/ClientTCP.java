@@ -10,12 +10,12 @@ import java.util.Scanner;
 public class ClientTCP {
 
     public static void main(String[] args) {
-        try {
-            //O cliente instancia o objeto Socket com o endereço de IP do servidor 
-            // e o número da porta
-            // Então, o construtor de Socket() tenta conectar no servidor
-            Socket client = new Socket("localhost", 5555);
-            Scanner scanner = new Scanner(System.in);
+        //O cliente instancia o objeto Socket com o endereço de IP do servidor 
+        // e o número da porta
+        // Então, o construtor de Socket() tenta conectar no servidor
+        try ( Socket client = new Socket("localhost", 5555);
+            Scanner scanner = new Scanner(System.in);) {
+            
 
             //Uma vez conectados servidor e cliente, a comunicação acontece por meio de I/O streams
             // OutputStream do servidor <---------> InputStream do cliente
@@ -39,11 +39,9 @@ public class ClientTCP {
             outputStream.flush();
             outputStream.close();
             inputStream.close();
-            scanner.close();
-            client.close();
 
         } catch (IOException e) {
             e.printStackTrace();
-        } 
+        }
     }
 }

@@ -10,10 +10,9 @@ import java.net.Socket;
 public class ServerTCP {
 
     public static void main(String[] args) {
-        try {
-            // Um objeto ServerSocket é instanciado pelo servidor com um nº de porta para comunicação (bind)
-            ServerSocket server = new ServerSocket(5555);
-            
+         // Um objeto ServerSocket é instanciado pelo servidor com um nº de porta para comunicação (bind)
+        try (ServerSocket server = new ServerSocket(5555);){
+           
             System.out.println("Aguardando mensagem...");
             // O servidor chama o método accept() e espera 
             // até que o cliente se conecte na porta dada (listen)

@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class ServerUDP {
     public static void main(String... args) {
-        DatagramSocket socket = null;
         byte[] buffRequest = new byte[1000];
-        Scanner scanner = new Scanner(System.in);
+        
 
-        try {
+        try (Scanner scanner = new Scanner(System.in);
+            DatagramSocket socket = new DatagramSocket(3000);){
             //Conecte usando usando um socket UDP em uma porta específica
-            socket = new DatagramSocket(3000);
+            
 
             //Objetos DatagramPacket (pacotes autocontidos) são usados para se comunicar por meio de DatagramSockets
             // Todo DatagramPacket consiste em um buffer de dados, um host remoto para o qual os dados precisam ser enviados
@@ -35,13 +35,8 @@ public class ServerUDP {
                 
             }
 
-            scanner.close();
-            socket.close();
-
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            socket.close();
         }
     }
 

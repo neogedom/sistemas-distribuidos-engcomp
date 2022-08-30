@@ -10,13 +10,12 @@ import java.util.Scanner;
 public class ClientUDP {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        DatagramSocket socket = null;
+        
         byte [] buffRequest = null;
 
 
-        try {
-            socket = new DatagramSocket();
+        try (Scanner scanner = new Scanner(System.in);
+            DatagramSocket socket =  new DatagramSocket();) {
 
             // O DatagramPacket a ser enviado espera um buffer, um tamanaho, 
             // um host do tipo InetAddress e uma porta
@@ -47,10 +46,6 @@ public class ClientUDP {
                 // Envia o datagrama para o servidor
                 socket.send(dgFromClient);
             }
-           
-            scanner.close();
-            socket.close();
-            
             
         } catch (IOException e) {
            e.printStackTrace();

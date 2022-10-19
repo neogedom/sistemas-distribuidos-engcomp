@@ -12,7 +12,6 @@ public class ServerUDP {
             DatagramSocket socket = new DatagramSocket(3000);){
             //Conecte usando usando um socket UDP em uma porta específica
             
-
             //Objetos DatagramPacket (pacotes autocontidos) são usados para se comunicar por meio de DatagramSockets
             // Todo DatagramPacket consiste em um buffer de dados, um host remoto para o qual os dados precisam ser enviados
             // e uma porta em que o agente remoto será ouvido

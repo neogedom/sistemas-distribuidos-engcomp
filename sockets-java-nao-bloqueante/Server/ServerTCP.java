@@ -36,7 +36,6 @@ public class ServerTCP {
 
             outputStream.close();
             inputStream.close();
-            server.close();
            
 
 
